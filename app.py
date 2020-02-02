@@ -7,6 +7,7 @@
 import streamlit as st
 import pickle
 import re
+from nltk.downloader import download
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 wnl = WordNetLemmatizer()
