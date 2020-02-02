@@ -7,9 +7,8 @@
 import streamlit as st
 import pickle
 import re
-import nltk 
-nltk.data.path.append('./nltk_data/')
-
+#import nltk 
+#nltk.data.path.append('./nltk_data/')
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 wnl = WordNetLemmatizer()
