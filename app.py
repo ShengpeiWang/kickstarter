@@ -44,7 +44,7 @@ def preproc(text):
     return p
 
 ## load models
-model, tfidf, onehot, goodwords, badwords, result_features = pickle.load(open("pickle/appv2models.pkl", "rb"))
+model, tfidf, onehot, goodwords, badwords, result_features = pickle.load(open("pickle/appv3models.pkl", "rb"))
 
 #st.markdown('<style>h1{color: red;}</style>', unsafe_allow_html = True)
 
@@ -61,19 +61,19 @@ u_title = st.text_input("What's your idea?", "Blue Rose - Make 100", key = "titl
 
 u_blurb = st.text_input("Blurb?", "We're making 100 limited edition hard enamel pins with a beautiful illustrated blue rose design to motivate and add flair to your life.", key = "blurb")
 
-goal = st.sidebar.text_input("How much is your goal?", "300", key = "goal")
+#goal = st.sidebar.text_input("How much is your goal?", "300", key = "goal")
 
 c = st.sidebar.selectbox(
-    'How would you like to be contacted?',
-    ('Comics', 'Dance', 'Journalism', 'Photography', 
-     'Games', 'Music', 'Technology', 'Crafts', 
+    'Category',
+    ('Crafts', 'Comics', 'Dance', 'Journalism', 'Photography', 
+     'Games', 'Music', 'Technology', 
      'Film & Video', 'Art', 'Design', 'Theater',
      'Food', 'Fashion', 'Publishing'))
 
 # function to write the response  
 
 # predict the first story
-u_story = st.text_area("your draft story here:", "Hello! I’m Carolyn -- illustrator, designer, and cartoonist -- creative director of Curls Studio.   We're raising funds to produce 100 limited edition hard enamel pins with a beautiful original illustrated Blue Rose design. The pins will be produced at 30mm tall with sleek rose gold plating and blue glitter color. Each pin will be fixed with a clear rubber clutch and come with a backing card. Blue Rose Pin-spiration  I became enamored with blue roses about a decade ago because they symbolize unattainable love and longing to attain the impossible, as a Blue Rose does not exist in nature. The 2020 PANTONE Color of the Year is Classic Blue -- instilling calm, confidence, and connection, this enduring blue hue highlights our desire for a dependable and stable foundation on which to build as we cross the threshold into a new era. There is a sense of mystery, rarity, and hope within the symbolism of a Blue Rose. You may want to give the pin as a gift to someone getting married who can wear something blue as tradition. You may want to give two or share the pin with a friend. You may want a reminder to stop and smell the roses or a symbolic physical representation of waiting for true love. (see Stop and Smell the Roses reward option to pledge for two Blue Rose pins).  Hard enamel pin badges are durable due to the process that the enamel goes through. The stamped metal pin badge is filled with blue glitter color and is polished flat to leave a smooth flat surface.", key = "story")
+u_story = st.text_area("Your draft story here:", "Hello! I’m Carolyn -- illustrator, designer, and cartoonist -- creative director of Curls Studio.   We're raising funds to produce 100 limited edition hard enamel pins with a beautiful original illustrated Blue Rose design. The pins will be produced at 30mm tall with sleek rose gold plating and blue glitter color. Each pin will be fixed with a clear rubber clutch and come with a backing card. Blue Rose Pin-spiration  I became enamored with blue roses about a decade ago because they symbolize unattainable love and longing to attain the impossible, as a Blue Rose does not exist in nature. The 2020 PANTONE Color of the Year is Classic Blue -- instilling calm, confidence, and connection, this enduring blue hue highlights our desire for a dependable and stable foundation on which to build as we cross the threshold into a new era. There is a sense of mystery, rarity, and hope within the symbolism of a Blue Rose. You may want to give the pin as a gift to someone getting married who can wear something blue as tradition. You may want to give two or share the pin with a friend. You may want a reminder to stop and smell the roses or a symbolic physical representation of waiting for true love. (see Stop and Smell the Roses reward option to pledge for two Blue Rose pins).  Hard enamel pin badges are durable due to the process that the enamel goes through. The stamped metal pin badge is filled with blue glitter color and is polished flat to leave a smooth flat surface.", key = "story")
 
 category =  DataFrame({'category' : [c]})
 
@@ -94,7 +94,7 @@ pred = model.predict(x_full)
 
 pred_median = 10 ** pred[0]
 
-st.header("For projects like yours, the median amount pledged is " + str(round(pred_median, 2)))
+st.header("The median amount pledged for projects like this is $" + str(round(pred_median, 2)))
 
 # get words in the user entry that contributed positively or negatively to the proposal performance
 result_features['input'] = tfidf_m[:1500].toarray().T
@@ -103,25 +103,11 @@ rec = result_features.sort_values(axis = 'index', by = ['value'])
 positive = rec[rec['value'] > 0 ].tail(15)
 negative = rec[rec['value'] < 0 ].head(15)
 
-if (float(goal) > pred_median):
-  st.subheader('This is less than your goal.')
-  st.write(" ")
-  suggest_w = st.checkbox('See custom suggestions:')
-  if suggest_w:
-    st.markdown('Here are words you used that contributed positively to our prediction:')
-    st.write('*' + ', '.join(list(positive['feature'])) + '*')
-    st.markdown('Here are words you may consider rephrasing:')
-    st.write('*' + ', '.join(list(negative['feature'])) + '*')
-
-if (float(goal) < pred_median):
-  st.subheader('This is more than your goal. Consider shifting priority to building your community!')
-  st.write(" ")
-  suggest_f = st.checkbox('I want to improve the proposal more:')
-  if suggest_f:
-    st.markdown('Here are words you used that contributed positively to our prediction:')
-    st.write('*' + ', '.join(list(positive['feature'])) + '*')
-    st.markdown('Here are words you may consider rephrasing:')
-    st.write('*' + ', '.join(list(negative['feature'])) + '*')
+if st.checkbox('see custom suggestions:'):
+  st.markdown('Here are words you used that contributed positively to our prediction:')
+  st.write('*' + ', '.join(list(positive['feature'])) + '*')
+  st.markdown('Here are words you may consider rephrasing:')
+  st.write('*' + ', '.join(list(negative['feature'])) + '*')
 
 
 if st.sidebar.checkbox("Show general suggestions"):
