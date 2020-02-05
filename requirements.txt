@@ -4,3 +4,4 @@ pandas
 nltk
 sklearn
 scipy
+matplotlib
