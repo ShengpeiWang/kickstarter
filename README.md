@@ -20,11 +20,12 @@ I want to help entrepreneurs succeed in running Kickstarter campaigns, because I
 - The project information can be found at [WebRobots](https://webrobots.io/kickstarter-datasets/) website. I imported the JSON version into a MongoDB database for querying, you can also download the csv version if preferred.
 
 ## Feedback
-If you have any thoughts about the app or the project, please email me at shengpeiwang@gmail.com
+This is sitll a work in progress. If you have any thoughts about the app or the project, please email me at shengpeiwang@gmail.com
 
 ## Credits
 - [WebRobots](https://webrobots.io/kickstarter-datasets/)
 - [Kickstarts](https://www.kickstarter.com/)
 - [Insight Data Science](https://www.insightdatascience.com/)
 
-
+## More information
+- [check out the presentation for this project](https://docs.google.com/presentation/d/1oJsKwlv7ab87P3WkZVBMHWjuGsLIRW0dGD4xwoAYb5Q/edit?usp=sharing)
