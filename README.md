@@ -1,4 +1,4 @@
-# kick Meter
+# Kick Meter
 Helping you set a realistic Kickstarter goal! Explore the app: [Sw-kickstart.herokuapp.com] (https://sw-kickstart.herokuapp.com)
 
 ## Motivation
