@@ -2,7 +2,7 @@
 Helping you set a realistic Kickstarter goal! Explore the app: [Sw-kickstart.herokuapp.com](https://sw-kickstart.herokuapp.com)
 
 ## Motivation
-I want to help entrepreneurs succeed in running Kickstarter campaigns, because I admire their courage and efforts in pursuing their ideas. The app predicts the amount a project would raise using their proposal information, and give custom suggestions on word choices for improvements. This was built in three weeks as an [Insight Data Science](https://www.insightdatascience.com/) fellow. 
+I want to help entrepreneurs succeed in running Kickstarter campaigns, because I admire their courage and efforts in pursuing their ideas. The app predicts the amount a project would raise using proposal information including the title, the blurb and and the story. The app also gives custom suggestions on word choices for improvements based on both words used in the proposal and feature importance from the model that powers the app. This was built in three weeks as an [Insight Data Science](https://www.insightdatascience.com/) fellow. 
 
 ## Built with
 - Python
