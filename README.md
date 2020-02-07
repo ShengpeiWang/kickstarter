@@ -16,7 +16,7 @@ I want to help entrepreneurs succeed in running Kickstarter campaigns, because I
 - Source code for the streamlit app (app.py)
 
 ## Local setup
-- Environmental dependencies are listed at the beginning of each code file.
+- Environmental dependencies are listed at the beginning of each file.
 - The project information can be found at [WebRobots](https://webrobots.io/kickstarter-datasets/) website. I imported the JSON version into a MongoDB database for querying, you can also download the csv version if preferred.
 
 ## Feedback
