@@ -123,4 +123,5 @@ if st.sidebar.checkbox("Show general suggestions"):
 
 st.sidebar.markdown(" ")
 st.sidebar.markdown("Learn more at:")
-st.sidebar.markdown('<span>[Github.com/ShengpeiWang/Kickstarter](https://github.com/ShengpeiWang/kickstarter)</span><br><br>', unsafe_allow_html=True)
+st.sidebar.markdown('<span>[Github.com/ShengpeiWang/Kickstarter](https://github.com/ShengpeiWang/kickstarter)</span>', unsafe_allow_html=True)
+st.sidebar.markdown('<span>[See presentation](https://docs.google.com/presentation/d/1oJsKwlv7ab87P3WkZVBMHWjuGsLIRW0dGD4xwoAYb5Q/edit?usp=sharing)</span>', unsafe_allow_html=True)
