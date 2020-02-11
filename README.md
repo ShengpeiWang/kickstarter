@@ -17,7 +17,12 @@ I want to help entrepreneurs succeed in running Kickstarter campaigns, because I
 
 ## Local setup
 - Environmental dependencies are listed at the beginning of each file.
-- The project information has been scrapped by the [WebRobots](https://webrobots.io/kickstarter-datasets/). I imported the JSON version into a MongoDB database for querying. You can also download the csv version if preferred.
+
+## How to use
+- "app.py" contained code that powered the streamlit app. You can run it locally using "streamlit run app.py" in your terminal.
+- "kick_project.ipynb" contained code for relevant EDAs and analyses for the app. You can find a copy of the data that went into the analyses in the "pickle" folder. 
+- The data was obtained from two sources and the "web_scrapping.ipynb" contained code for obtaining the stories data through web scrapping. This required a local postgreSQL database to be set up in advance. The project information has been scrapped by the [WebRobots](https://webrobots.io/kickstarter-datasets/). I imported the JSON version into a MongoDB database for querying. You can also download the csv version if preferred.
+- "data_cleaning.ipynb" and "filter_non_english.ipynb" contained code that queried the MongoDB and the postgreSQL databases. These data were then cleaned,joined together, and further cleaned. They should be run sequencially, and required both databases to be set up locally.
 
 ## Feedback
 This is sitll a work in progress. If you have any thoughts about the app or the project, please email me at shengpeiwang@gmail.com

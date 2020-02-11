@@ -99,6 +99,7 @@ rec = result_features.sort_values(axis = 'index', by = ['value'])
 positive = rec[rec['value'] > 0 ].tail(8)
 negative = rec[rec['value'] < 0 ].head(8)
 
+
 plt.subplot(1, 3, 1)
 plt.barh(range(7, -1, -1), negative['value'], 
          color = "coral", edgecolor = "black", linewidth = 1.2)
